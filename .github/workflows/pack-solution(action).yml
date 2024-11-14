@@ -58,7 +58,7 @@ jobs:
         Get-ChildItem  -Recurse | foreach { write-host $_.FullName }
   pack:
     needs: [setup]
-    uses: Contoso-W-Enterprise/PowerPlatformALM/.github/workflows/workflow-pack-solution.yml@main
+    uses: Contoso-W-Enterprise/PowerPlatformALM/.github/workflows/workflow-pack-solution.yml@V1
     with: 
       solution-name: ${{ inputs.solution-name }}
       branch-name: '${{ inputs.branch-type }}/${{ inputs.branch-name}}'
