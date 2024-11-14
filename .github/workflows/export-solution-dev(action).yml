@@ -76,7 +76,7 @@ jobs:
   #  secrets: inherit
   export:
     needs: [setup]      
-    uses: Contoso-W-Enterprise/PowerPlatformALM/.github/workflows/workflow-export-solution.yml@V1
+    uses: Contoso-W-Enterprise/PowerPlatformALM/.github/workflows/workflow-export-solution.yml@main
     with: 
       environment: ${{ inputs.source-Environment }}
       solution-names: ${{ inputs.solution-names }}
