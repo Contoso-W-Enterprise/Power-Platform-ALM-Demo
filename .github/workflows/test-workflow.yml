@@ -31,3 +31,7 @@ jobs:
           github-server-url: 'https://github.com'
           lfs: true
           persist-credentials: true
+      - name: Debug list of files
+        run: |
+          Get-ChildItem -path '.' -Recurse | foreach { write-host $_.FullName }
+        shell: pwsh
