@@ -57,3 +57,12 @@ jobs:
         run: |
           Get-ChildItem -path '.' -Recurse | foreach { write-host $_.FullName }
         shell: pwsh
+  deploy:
+    strategy:
+      matrix:
+        solutions-Names: ${{ env.solution-names }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: output matrix
+        run: echo ${{ matrix.solutions-names}}
+      
