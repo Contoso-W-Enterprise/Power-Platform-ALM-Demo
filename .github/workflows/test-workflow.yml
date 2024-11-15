@@ -65,9 +65,12 @@ jobs:
     needs: build
     strategy:
       matrix:
-        solutions-name: ${{ fromJSON( needs.build.outputs.solution-names) }}
+        solution-name: ${{ fromJSON( needs.build.outputs.solution-names) }}
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false 
     steps:
       - name: output matrix
-        run: echo ${{ matrix.solutions-name}}
+        run: echo ${{ matrix.solution-name}}
       
