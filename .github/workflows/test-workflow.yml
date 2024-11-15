@@ -65,7 +65,7 @@ jobs:
     needs: build
     strategy:
       matrix:
-        solutions-name: ${{ fromJSON( needs.build.output.solution-names) }}
+        solutions-name: ${{ fromJSON( needs.build.outputs.solution-names) }}
     runs-on: ubuntu-latest
     steps:
       - name: output matrix
