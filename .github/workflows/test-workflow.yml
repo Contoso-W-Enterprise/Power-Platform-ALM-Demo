@@ -39,7 +39,7 @@ jobs:
           }
           write-host $solutionNames
           echo "solution-names=$solutionNames" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append;
-          echo "value=$solutionNames" >> $GITHUB_OUTPUT
+          write-output "value=$solutionNames" >> $Env:GITHUB_OUTPUT
         shell: pwsh 
       - name: Output Solution Names
         run: echo ${{ env.solution-names }}
