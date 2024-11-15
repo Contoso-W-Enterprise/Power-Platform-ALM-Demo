@@ -62,6 +62,7 @@ jobs:
           Get-ChildItem -path '.' -Recurse | foreach { write-host $_.FullName }
         shell: pwsh
   deploy:
+    needs: build
     strategy:
       matrix:
         solutions-name: ${{ fromJSON( needs.build.output.solution-names) }}
