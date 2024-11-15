@@ -30,7 +30,7 @@ jobs:
               $solutionNames += $_.Trim()
               write-host $_.Trim()
             }
-            $solutionNames = @solutionList | Convertto-Json
+            $solutionNames = $solutionList | Convertto-Json
           }
           else {
             $solutionNames = '${{inputs.solution-names}}'
