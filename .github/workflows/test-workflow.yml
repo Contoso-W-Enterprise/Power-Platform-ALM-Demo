@@ -25,7 +25,8 @@ jobs:
       - name: Set Solution Names Matrix
         run: | 
           if ('${{inputs.solution-names}}' -match ','){
-            $solutionNames =  '${{inputs.solution-names}}' -split ','
+            $solutionNames = @()
+            '${{inputs.solution-names}}' -split ',' | foreach { $solutionName += $_.Trim() }
           }
           else {
             $solutionNames = ${{inputs.solution-names}}
