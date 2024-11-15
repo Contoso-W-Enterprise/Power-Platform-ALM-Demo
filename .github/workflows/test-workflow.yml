@@ -60,9 +60,9 @@ jobs:
   deploy:
     strategy:
       matrix:
-        solutions-Names: ${{ env.solution-names }}
+        solutions-name: ${{ env.solution-names }}
     runs-on: ubuntu-latest
     steps:
       - name: output matrix
-        run: echo ${{ matrix.solutions-names}}
+        run: echo ${{ matrix.solutions-name}}
       
