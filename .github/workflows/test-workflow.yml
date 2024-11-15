@@ -11,7 +11,7 @@ on:
         description: "Solution Name(s)"
         type: string
         required: true
-        default: 'contoso_university_core, ContosoUniversityExtended'
+        default: '[contoso_university_core, ContosoUniversityExtended]'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -60,7 +60,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        solutions-name: ${{ env.solution-names }}
+        solutions-name: ${{ fromJSON(inputs.solution-names) }}
     runs-on: ubuntu-latest
     steps:
       - name: output matrix
