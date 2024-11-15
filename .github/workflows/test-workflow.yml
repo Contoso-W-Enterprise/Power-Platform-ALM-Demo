@@ -32,6 +32,7 @@ jobs:
             $solutionNames = '${{inputs.solution-names}}'
           }
           echo "solution-names=$solutionNames" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append;
+        shell: pwsh 
       - name: Output Solution Names
         run: echo ${{ env.solution-names }}
       - name: Checkout new Branch 
