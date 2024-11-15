@@ -42,7 +42,7 @@ jobs:
           write-output "value=$solutionNames" >> $Env:GITHUB_OUTPUT
         shell: pwsh 
       - name: Output Solution Names
-        run: echo ${{ env.solution-names }}
+        run: echo ${{ steps.solution-matrix.outputs.value }}
       - name: Checkout new Branch 
         uses: actions/checkout@v4
         with:
