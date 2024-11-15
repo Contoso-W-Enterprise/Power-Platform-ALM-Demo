@@ -24,7 +24,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Set Solution Names Matrix
         run: | 
-          if ( ',' -in '${{inputs.solution-names}}') }
+          if ('${{inputs.solution-names}}' -match ','){
             $solutionNames =  '${{inputs.solution-names}}' -split ','
           }
           else {
