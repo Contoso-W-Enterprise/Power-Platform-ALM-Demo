@@ -34,6 +34,7 @@ jobs:
           else {
             $solutionNames = '${{inputs.solution-names}}'
           }
+          write-host $solutionNames
           echo "solution-names=$solutionNames" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append;
         shell: pwsh 
       - name: Output Solution Names
