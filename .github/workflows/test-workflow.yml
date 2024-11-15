@@ -6,7 +6,12 @@ name: test-workflow
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    inputs:
+      solution-names:
+        description: "Solution Name(s)"
+        type: string
+        required: true
+        default: 'contoso_university_core,ContosoUniversityExtended'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -17,6 +22,17 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Set Solution Names Matrix
+        run: | 
+          if ( ',' -in '${{inputs.solution-names}}') }
+            $solutionNames =  '${{inputs.solution-names}}' -split ','
+          }
+          else {
+            $solutionNames = ${{inputs.solution-names}}
+          }
+          echo "solution-names=$solutionNames" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf8 -Append;
+      - name: Output Solution Names
+        run: echo ${{ env.solution-names }}
       - name: Checkout new Branch 
         uses: actions/checkout@v4
         with:
