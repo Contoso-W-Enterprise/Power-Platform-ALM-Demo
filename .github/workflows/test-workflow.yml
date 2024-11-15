@@ -26,7 +26,10 @@ jobs:
         run: | 
           if ('${{inputs.solution-names}}' -match ','){
             $solutionNames = @()
-            '${{inputs.solution-names}}' -split ',' | foreach { $solutionName += $_.Trim() }
+            '${{inputs.solution-names}}' -split ',' | foreach { 
+              $solutionName += $_.Trim()
+              write-host $_.Trim()
+            }
           }
           else {
             $solutionNames = '${{inputs.solution-names}}'
